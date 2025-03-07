@@ -1,18 +1,17 @@
 import java.util.PriorityQueue;
 
-public class MyHeap {
+public class MyHeap extends Logarithmeter{
     public static void main(String[] args) {
         //PriorityQueue<Integer> heap =new PriorityQueue<>((a,b)->{return b-a;});
-        MyHeap1 heap=new MyHeap1(5);
-        heap.add(0);
-        heap.add(3);
-        heap.add(1);
-        heap.add(2);
-        while (!heap.isempty()) {
-            System.out.println(heap.poll()+"----"+heap.heapsize);
+        MyHeap1 heap=new MyHeap1(newRandomNum(20));
+        for (int i = 0; i < heap.limit; i++) {
+            heap.add(newRandomNum(20));
         }
-
-
+        heap.showheap();
+        while (!heap.isempty()) {
+            System.out.print("弹出了："+heap.poll()+"----堆内剩余：");
+            heap.showheap();
+        }
     }
 
 }
@@ -29,8 +28,13 @@ class MyHeap1{
             return;
         }
         heap[heapsize]=arr;
-        heapify(heapsize++);
-
+        heapinsert(heapsize++);
+    }
+    public void heapinsert(int index){
+        while (heap[index]>heap[(index-1)/2]) {
+            swap(index, (index-1)/2);
+            index=(index-1)/2;
+        }
     }
     public int poll(){
         if (isempty()) {
@@ -49,8 +53,8 @@ class MyHeap1{
     }
     public void heapify(int index){
         int leftsun=index*2+1;
-        while (leftsun<limit) {
-            int bigindex=(leftsun+1<limit)&&heap[leftsun+1]>heap[leftsun]?leftsun+1:leftsun;
+        while (leftsun<heapsize) {
+            int bigindex=(leftsun+1<heapsize)&&heap[leftsun+1]>heap[leftsun]?leftsun+1:leftsun;
             bigindex=heap[index]<heap[bigindex]?bigindex:index;
             if (bigindex==index) {
                 break;
@@ -77,4 +81,16 @@ class MyHeap1{
             return false;
         }
         return true;
-    }}
+    }
+    public void showheap(){
+        if (heapsize==0) {
+            System.out.println("[]");
+            return;
+        }
+        System.out.print("[");
+        for (int i = 0; i < heapsize-1; i++) {
+            System.out.print(heap[i]+",");
+        }
+        System.out.println(heap[heapsize-1]+"]");
+    }
+}

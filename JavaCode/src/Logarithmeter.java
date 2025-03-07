@@ -12,9 +12,13 @@ public class Logarithmeter {
         return arr;
     }
 
-    static int newRandomNum(int maxValue){
+    static int newRandomNegativeNum(int maxValue){
         return ((int)(Math.random()*maxValue)-(int)(Math.random()*maxValue));
     }
+    static int newRandomNum(int maxValue){
+        return ((int)(Math.random()*maxValue));
+    }
+
 
     static int[] copyArr(int[] arr){
         int[] a=new int[arr.length];
