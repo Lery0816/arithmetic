@@ -36,13 +36,10 @@ class MyHeap1{
         if (isempty()) {
             return -1;
         }
-        int index=0;
-        while (index*2+1<=limit) {
-            int bigindex=index*2+2<=limit&&heap[index*2+1]>heap[index*2+2]?index*2+1:index*2+2;
-            swap(index, bigindex);
-            index=bigindex;
-        }
-        return heap[heapsize--];
+        int ans=peak();
+        swap(0, --heapsize);
+        heapify(0);
+        return ans;
     }
     public int peak(){
         if (isempty()) {
@@ -51,9 +48,16 @@ class MyHeap1{
         return heap[0];
     }
     public void heapify(int index){
-        while (heap[index]>heap[((index-1)/2)]) {
-            swap(index, ((index-1)/2));
-            index=((index-1)/2);
+        int leftsun=index*2+1;
+        while (leftsun<limit) {
+            int bigindex=(leftsun+1<limit)&&heap[leftsun+1]>heap[leftsun]?leftsun+1:leftsun;
+            bigindex=heap[index]<heap[bigindex]?bigindex:index;
+            if (bigindex==index) {
+                break;
+            }
+            swap(index, bigindex);
+            index=bigindex;
+            leftsun=index*2+1;
         }
     }
     public void swap(int a,int b){
