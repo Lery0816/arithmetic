@@ -1,3 +1,5 @@
+package src;
+
 public class SmallSum {
     public static void main(String[] args) {
         //int[] arr={1,4,2,3,4,5,6,6,3,2,4};

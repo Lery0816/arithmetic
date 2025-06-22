@@ -1,3 +1,5 @@
+package src;
+
 public class Logarithmeter {
     public static void main(String[] args) {
         
@@ -15,7 +17,7 @@ public class Logarithmeter {
     static int newRandomNegativeNum(int maxValue){
         return ((int)(Math.random()*maxValue)-(int)(Math.random()*maxValue));
     }
-    static int newRandomNum(int maxValue){
+    public static int newRandomNum(int maxValue){
         return ((int)(Math.random()*maxValue));
     }
 
