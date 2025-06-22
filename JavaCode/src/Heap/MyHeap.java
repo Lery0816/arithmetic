@@ -1,11 +1,14 @@
-import java.util.PriorityQueue;
+package src.Heap;
 
-public class MyHeap extends Logarithmeter{
+import src.Logarithmeter;
+
+
+public class MyHeap extends Logarithmeter {
     public static void main(String[] args) {
         //PriorityQueue<Integer> heap =new PriorityQueue<>((a,b)->{return b-a;});
-        MyHeap1 heap=new MyHeap1(newRandomNum(20));
+        MyHeap1 heap=new MyHeap1(Logarithmeter.newRandomNum(20));
         for (int i = 0; i < heap.limit; i++) {
-            heap.add(newRandomNum(20));
+            heap.add(Logarithmeter.newRandomNum(20));
         }
         heap.showheap();
         while (!heap.isempty()) {

@@ -1,3 +1,5 @@
+package src;
+
 public class SimpleSort extends Logarithmeter{
     public static void main(String[] args) {
         int time=50000;
